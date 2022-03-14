@@ -1,0 +1,9 @@
+{
+    "python.formatting.provider": "black",
+    "python.languageServer": "Pylance",
+    "python.analysis.extraPaths": [
+        "/home/samuel/.virtualenvs/web3/lib/python3.8/site-packages",
+        "/home/samuel/.local/pipx/venvs/eth-brownie/bin/",
+        "/home/samuel/.local/pipx/venvs/eth-brownie/lib/python3.8/site-packages"
+    ],
+}
