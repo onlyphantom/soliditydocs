@@ -3,7 +3,7 @@ pragma solidity >=0.4.22 <0.9.0;
 
 contract Coin {
     // state variable
-    address public immutable minter;
+    address public minter;
     mapping(address => uint256) public balances;
 
     event Sent(address from, address to, uint256 amount);
@@ -27,12 +27,12 @@ contract Coin {
         // check that the sender does indeed have the amount specified
         require(balances[msg.sender] >= _amount, "Not enough balance.");
         // alternative
-        if (balances[msg.sender] < _amount) {
-            revert InsufficientBalance({
-                requested: _amount,
-                bal_available: balances[msg.sender]
-            });
-        }
+        // if (balances[msg.sender] < _amount) {
+        //     revert InsufficientBalance({
+        //         requested: _amount,
+        //         bal_available: balances[msg.sender]
+        //     });
+        // }
 
         balances[msg.sender] -= _amount;
         balances[_receiver] += _amount;
