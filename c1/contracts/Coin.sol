@@ -12,17 +12,20 @@ contract Coin {
         minter = msg.sender;
     }
 
+    // creates coins out of thin air
+    // make sure only minter gets to called this. Otherwise, bad tokenomics.
     function mint(address _receiver, uint256 _amount) public {
         // this should only be called by the creator of this coin
         require(msg.sender == minter);
-        balances[_receiver] += _amount;
+
+        balances[_receiver] += _amount; // overflow: 2 ^ 256 - 1
     }
 
     error InsufficientBalance(uint256 requested, uint256 bal_available);
 
     function send(address _receiver, uint256 _amount) public {
         // check that the sender does indeed have the amount specified
-        require(balances[msg.sender] >= _amount);
+        require(balances[msg.sender] >= _amount, "Not enough balance.");
         // alternative
         if (balances[msg.sender] < _amount) {
             revert InsufficientBalance({
