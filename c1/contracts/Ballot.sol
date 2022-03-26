@@ -30,7 +30,7 @@ contract Ballot {
         voters[chairperson].weight = 1;
 
         // for proposal in proposalName:
-        //    proposals + [Proposal(proposalName, 0)]
+        //    proposals + [Proposal(proposal, 0)]
         for (uint256 i = 0; i < proposalName.length; i++) {
             proposals.push(Proposal({name: proposalName[i], voteCount: 0}));
         }

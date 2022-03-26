@@ -61,10 +61,8 @@ def test_delegates_has_voted(ballot):
 
 
 def test_delegates_toself(ballot):
-    ballot.giveRightToVote(accounts[1], {"from": accounts[0]})
-
     with reverts():
-        ballot.delegate(accounts[1], {"from": accounts[1]})
+        ballot.delegate(accounts[0], {"from": accounts[0]})
 
 
 def test_delegates_toloop(ballot):
